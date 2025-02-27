@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   BarChart2, 
@@ -12,7 +12,11 @@ import {
   Pause,
   ChevronDown,
   ChevronUp,
-  Download
+  Download,
+  Mail,
+  User,
+  FileText,
+  Zap
 } from 'lucide-react';
 import { 
   LineChart, 
@@ -84,11 +88,33 @@ const timeData = [
   { time: '3am', listeners: 500 },
 ];
 
+// Mock XML data (simulated as a parsed object)
+const mockOwnerData = {
+  name: "ResonanceX",
+  email: "team@resonancex.com",
+  plan: "Enterprise",
+  membersSince: "2023-05-15",
+  podcastCount: 12,
+  totalEpisodes: 156,
+  xmlLastUpdated: "2023-11-28T14:32:45Z"
+};
+
 const COLORS = ['#8b5cf6', '#a78bfa', '#c4b5fd', '#ddd6fe', '#ede9fe', '#f5f3ff'];
 
 const AnalyticsDashboard: React.FC = () => {
   const [timeRange, setTimeRange] = useState('30d');
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [ownerData, setOwnerData] = useState(mockOwnerData);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate loading owner data from XML
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleSection = (section: string) => {
     if (expandedSection === section) {
@@ -110,6 +136,50 @@ const AnalyticsDashboard: React.FC = () => {
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* User Card */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-8"
+        >
+          <div className="flex flex-col md:flex-row md:items-center justify-between">
+            <div className="mb-4 md:mb-0">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Hi, Welcome {ownerData.name} team at the platform
+              </h2>
+              <div className="flex items-center text-gray-600 dark:text-gray-300">
+                <Mail size={16} className="mr-2" />
+                <span>Owner's mail id - {ownerData.email}</span>
+              </div>
+            </div>
+            
+            <div className="bg-purple-50 dark:bg-purple-900/10 p-4 rounded-lg">
+              <div className="flex items-center mb-2">
+                <FileText size={16} className="text-purple-600 dark:text-purple-400 mr-2" />
+                <h3 className="font-medium text-purple-700 dark:text-purple-300">XML Data Source</h3>
+              </div>
+              
+              {isLoading ? (
+                <div className="animate-pulse flex space-x-4">
+                  <div className="flex-1 space-y-2 py-1">
+                    <div className="h-2 bg-purple-200 dark:bg-purple-700 rounded"></div>
+                    <div className="h-2 bg-purple-200 dark:bg-purple-700 rounded w-5/6"></div>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-sm text-gray-700 dark:text-gray-300 space-y-1">
+                  <p>Plan: {ownerData.plan}</p>
+                  <p>Member Since: {new Date(ownerData.membersSince).toLocaleDateString()}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                    XML Last Updated: {new Date(ownerData.xmlLastUpdated).toLocaleString()}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

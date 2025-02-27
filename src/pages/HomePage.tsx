@@ -293,7 +293,7 @@ const HomePage: React.FC = () => {
               Ready to Take Your Podcast to the Next Level?
             </h2>
             <p className="text-xl text-purple-100 max-w-3xl mx-auto mb-8">
-              Join thousands of podcasters who are using PodMetrics to understand their audience and grow their show.
+              Join thousands of podcasters who are using ResonanceX to understand their audience and grow their show.
             </p>
             <Link 
               to="/analytics" 
@@ -343,7 +343,7 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
               <p className="text-gray-600 dark:text-gray-300">
-                "PodMetrics has been a game-changer for my podcast. The audience insights helped me tailor my content to what my listeners actually want, and I've seen a 45% growth in just three months!"
+                "ResonanceX has been a game-changer for my podcast. The audience insights helped me tailor my content to what my listeners actually want, and I've seen a 45% growth in just three months!"
               </p>
             </motion.div>
             

@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
               <Mic className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-              <span className="ml-2 text-xl font-bold text-gray-900 dark:text-white">PodMetrics</span>
+              <span className="ml-2 text-xl font-bold text-gray-900 dark:text-white">ResonanceX</span>
             </Link>
           </div>
 

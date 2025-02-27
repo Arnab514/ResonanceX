@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center">
               <Mic className="h-8 w-8 text-purple-600 dark:text-purple-400" />
-              <span className="ml-2 text-xl font-bold text-gray-900 dark:text-white">PodMetrics</span>
+              <span className="ml-2 text-xl font-bold text-gray-900 dark:text-white">ResonanceX</span>
             </div>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               Advanced podcast analytics to help you grow your audience and understand your listeners.
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
         </div>
         <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-4 flex justify-between items-center">
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} PodMetrics. All rights reserved.
+            &copy; {new Date().getFullYear()} ResonanceX. All rights reserved.
           </p>
           <div className="flex space-x-4 text-sm text-gray-600 dark:text-gray-400">
             <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400">Privacy Policy</a>
